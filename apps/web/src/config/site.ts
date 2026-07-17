@@ -20,7 +20,7 @@ export const siteConfig = {
   phoneNumbers: ['7003573290', '8583058673'],
   navigation: [
     { label: 'Home', href: '/' },
-    { label: 'Courses', href: '/#featured-courses' },
+    { label: 'Courses', href: '/courses' },
     { label: 'Roadmaps', href: '/#learning-journey' },
     { label: 'Projects', href: '/#projects' },
     { label: 'Learn', href: '/#hybrid-learning' },

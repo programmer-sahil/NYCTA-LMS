@@ -1,7 +1,8 @@
+import { CourseCard } from '@/components/courses/course-card'
 import { SectionHeading } from '@/components/shared/section-heading'
+import { publishedCourses } from '@/content/courses'
 import { homeContent } from '@/content/home'
 
-import { CourseCard } from './course-card'
 import { HomeSection } from './home-section'
 
 export function FeaturedCoursesSection() {
@@ -20,7 +21,7 @@ export function FeaturedCoursesSection() {
         description={courses.description}
       />
       <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {courses.items.map((course, index) => (
+        {publishedCourses.map((course, index) => (
           <CourseCard key={course.id} course={course} number={index + 1} />
         ))}
       </div>

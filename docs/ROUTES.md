@@ -1,17 +1,19 @@
 # Planned Routes
 
-This document is a route plan, not an implementation checklist for the current setup phase. Only `/` in the web app and `GET /api/health` in the API exist today.
+This document records implemented public routes and planned protected routes. Public web course and lesson routes plus the API health and course-read hierarchy are implemented. Student, instructor, admin, and authentication routes remain planned.
 
 ## Public web routes
 
-| Route             | Purpose                                    |
-| ----------------- | ------------------------------------------ |
-| `/`               | Institute landing page                     |
-| `/about`          | Institute story, locations, and facilities |
-| `/courses`        | Public course catalog                      |
-| `/courses/[slug]` | Public course details                      |
-| `/contact`        | Contact and center information             |
-| `/login`          | Account sign-in                            |
+| Route                                             | Purpose                                    |
+| ------------------------------------------------- | ------------------------------------------ |
+| `/`                                               | Institute landing page                     |
+| `/about`                                          | Institute story, locations, and facilities |
+| `/courses`                                        | Public course catalog                      |
+| `/courses/[courseSlug]`                           | Public course details                      |
+| `/courses/[courseSlug]/[moduleSlug]`              | Public module overview                     |
+| `/courses/[courseSlug]/[moduleSlug]/[lessonSlug]` | Public lesson experience                   |
+| `/contact`                                        | Contact and center information             |
+| `/login`                                          | Account sign-in                            |
 
 ## Student web routes
 
@@ -48,14 +50,14 @@ This document is a route plan, not an implementation checklist for the current s
 
 ## Planned API route groups
 
-| Prefix             | Purpose                                   |
-| ------------------ | ----------------------------------------- |
-| `/api/health`      | Service health; implemented in this phase |
-| `/api/auth`        | Authentication and session workflows      |
-| `/api/courses`     | Course discovery and management           |
-| `/api/enrollments` | Enrollment workflows                      |
-| `/api/lessons`     | Lesson and resource delivery              |
-| `/api/practice`    | Practice questions and attempts           |
-| `/api/projects`    | Projects and submissions                  |
-| `/api/users`       | Role-aware user management                |
-| `/api/reports`     | Administrative reporting                  |
+| Prefix             | Purpose                                                       |
+| ------------------ | ------------------------------------------------------------- |
+| `/api/health`      | Service health; implemented                                   |
+| `/api/auth`        | Authentication and session workflows                          |
+| `/api/courses`     | Public course hierarchy reads implemented; management planned |
+| `/api/enrollments` | Enrollment workflows                                          |
+| `/api/lessons`     | Lesson and resource delivery                                  |
+| `/api/practice`    | Practice questions and attempts                               |
+| `/api/projects`    | Projects and submissions                                      |
+| `/api/users`       | Role-aware user management                                    |
+| `/api/reports`     | Administrative reporting                                      |

@@ -10,7 +10,7 @@ Browser -> Next.js web application -> Express API -> MongoDB
                     +--- @nycta/shared --+
 ```
 
-MongoDB is the planned persistence layer. A Mongoose dependency and database connection utility establish the integration boundary, but no database connection or models are activated during this setup phase.
+MongoDB is the persistence layer for the API foundation. Mongoose models, indexes, environment validation, idempotent development seeding, and graceful connection shutdown are active. Public reads currently use the database; authentication and protected writes remain future work.
 
 ## Workspace units
 
@@ -20,7 +20,9 @@ The user-facing Next.js application uses the App Router, React, strict TypeScrip
 
 ### `apps/api`
 
-The HTTP service uses Express and strict TypeScript. `app.ts` creates and configures the Express application independently of `server.ts`, keeping future integration testing straightforward. Helmet supplies security headers, CORS controls browser origins, Morgan logs HTTP traffic, and errors terminate at central middleware. MongoDB configuration is represented by an environment variable and a reusable connection utility; startup does not require a database yet.
+The HTTP service uses Express and strict TypeScript. `app.ts` configures the application independently of `server.ts`, so Supertest can exercise it without binding a network port. Helmet supplies security headers, CORS controls browser origins, express-rate-limit protects public endpoints, Pino emits structured logs, Zod validates requests and configuration, and all failures terminate at central middleware. API startup connects to MongoDB before accepting traffic and closes both HTTP and database connections on shutdown.
+
+Domain code is grouped under `src/modules`: users, courses, modules, lessons, enrollments, progress, quizzes, and projects. Public course controllers coordinate the course, module, and lesson persistence models without exposing unpublished content.
 
 ### `packages/shared`
 
@@ -37,7 +39,7 @@ Product scope, architecture decisions, and route planning live here so implement
 - `packages/shared` must not depend on either application.
 - The web application communicates with the API over HTTP; it does not access MongoDB directly.
 
-The shared package is not consumed by either app during this minimal phase. Future consumption should add it as a workspace dependency with `workspace:*`.
+The shared package remains the platform-neutral contract boundary. API-specific persistence shapes stay inside `apps/api`; contracts intended for both applications should be promoted to `packages/shared` through its central export surface.
 
 ## Configuration
 

@@ -207,3 +207,26 @@
     transform: none !important;
   }
 }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .revision-print-area,
+  .revision-print-area * {
+    visibility: visible;
+  }
+
+  .revision-print-area {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    color: black;
+    background: white;
+  }
+
+  .revision-print-area button {
+    display: none;
+  }
+}

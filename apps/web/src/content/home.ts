@@ -19,14 +19,6 @@ export interface HomeFeature {
   accent: AccentTone
 }
 
-export interface FeaturedCourse {
-  id: string
-  title: string
-  description: string
-  topics: readonly string[]
-  accent: AccentTone
-}
-
 export interface JourneyStep {
   title: string
   description: string
@@ -45,7 +37,7 @@ export const homeContent = {
   announcement: {
     message:
       'Admissions and new hybrid batches are now open in Bandel and Chandannagar.',
-    primaryAction: { label: 'View Courses', href: '#featured-courses' },
+    primaryAction: { label: 'View Courses', href: '/courses' },
     secondaryAction: { label: 'Call Now', href: 'tel:7003573290' },
   },
   hero: {
@@ -54,7 +46,7 @@ export const homeContent = {
       'Build Job-Ready Technology Skills with Practical, AI-Assisted Learning',
     description:
       'Learn programming, data analytics, machine learning and full-stack development through classroom instruction, recorded lessons, guided practice and real-world projects.',
-    primaryAction: { label: 'Explore Courses', href: '#featured-courses' },
+    primaryAction: { label: 'Explore Courses', href: '/courses' },
     secondaryAction: { label: 'Speak to an Advisor', href: 'tel:7003573290' },
     trustIndicators: [
       '6 career-focused learning paths',
@@ -126,68 +118,6 @@ export const homeContent = {
     title: 'Six focused paths for practical technology skills',
     description:
       'Explore beginner-friendly course directions supported by classroom teaching, guided practice, and projects.',
-    items: [
-      {
-        id: 'data-analytics',
-        title: 'Data Analytics',
-        description:
-          'Learn to organise, explore, and communicate insights from data through guided practice.',
-        topics: [
-          'Data handling',
-          'Analysis foundations',
-          'Insight communication',
-        ],
-        accent: 'cyan',
-      },
-      {
-        id: 'data-science',
-        title: 'Data Science',
-        description:
-          'Build foundations for working with data, statistics, and data-driven problem solving.',
-        topics: [
-          'Data foundations',
-          'Statistics basics',
-          'Machine learning introduction',
-        ],
-        accent: 'violet',
-      },
-      {
-        id: 'full-stack',
-        title: 'Full Stack Development',
-        description:
-          'Learn frontend and backend foundations through guided application-building practice.',
-        topics: ['Frontend foundations', 'Backend foundations', 'Web projects'],
-        accent: 'emerald',
-      },
-      {
-        id: 'python',
-        title: 'Python Programming',
-        description:
-          'Develop programming fundamentals with a readable language and practical exercises.',
-        topics: ['Programming logic', 'Python foundations', 'Guided practice'],
-        accent: 'amber',
-      },
-      {
-        id: 'c-cpp',
-        title: 'C & C++ Programming',
-        description:
-          'Strengthen core programming concepts through structured C and C++ practice.',
-        topics: ['Core syntax', 'Problem solving', 'Programming fundamentals'],
-        accent: 'cyan',
-      },
-      {
-        id: 'java',
-        title: 'Java Programming',
-        description:
-          'Build object-oriented programming foundations through lessons and practical work.',
-        topics: [
-          'Java foundations',
-          'Object-oriented concepts',
-          'Practical exercises',
-        ],
-        accent: 'violet',
-      },
-    ] satisfies readonly FeaturedCourse[],
   },
   whyNycti: {
     eyebrow: 'Why choose NYCTI',
@@ -370,7 +300,7 @@ export const homeContent = {
     title: 'Start Your Technology Learning Journey',
     description:
       'Explore the available learning paths or speak directly with the institute about current hybrid batches.',
-    primaryAction: { label: 'Explore Courses', href: '#featured-courses' },
+    primaryAction: { label: 'Explore Courses', href: '/courses' },
     secondaryAction: { label: 'Contact the Institute', href: '#locations' },
   },
 } as const
